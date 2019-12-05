@@ -9,15 +9,20 @@ use SoapBox\Formatter\Formatter;
 class PostController extends Controller
 {
 
-    public function showAllPosts()
+    public function showAllPostsJson()
+    {   
+        $posts = Post::all();        
+        return response()->json(Post::all());
+    }
+
+    public function showAllPostsXml()
     {   
         $posts = Post::all();
         $array = $posts->toArray();
         $formatter = Formatter::make($array, Formatter::ARR);
         $xml   = $formatter->toXml();
         return $xml;
-        return response()->json(Post::all());
-    }
+    } 
 
     public function showOnePost($id)
     {

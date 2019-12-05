@@ -17,7 +17,9 @@ $router->get('/', function () use ($router) {
 
 
 $router->group(['prefix' => 'api'], function () use ($router) {
-    $router->get('posts',  ['uses' => 'PostController@showAllPosts']);
+    $router->get('postsJson',  ['uses' => 'PostController@showAllPostsJson']);
+
+    $router->get('postsXml',  ['uses' => 'PostController@showAllPostsXml']);
   
     $router->get('posts/{id}', ['uses' => 'PostController@showOnePost']);
   
